@@ -1,6 +1,8 @@
 package org.asset.telematics.Messagnger.service;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -18,13 +20,20 @@ public class MessageService {
 	
 	public List<Message> getAllMessages()
 	{
-		/*Message m1=new Message(1l,"Hello World","Pavan");
-		Message m2=new Message(2l,"Hello Hyderabad !","Kumar");
-		List<Message> list=new ArrayList<>();
-		list.add(m1);
-		list.add(m2);		
-		return list;*/
 		return new ArrayList<Message>(messages.values());
+	}
+	public List<Message> getAllMessagesforanYear(int year)
+	{
+		List<Message> messagesforyear=new ArrayList<>();
+		Calendar cl=Calendar.getInstance();
+		for(Message message:messages.values())
+		{
+			if(cl.get(Calendar.YEAR)==year)
+			{
+				messagesforyear.add(message);
+			}
+		}
+		return messagesforyear;
 	}
 	public Message getMessage(long id) {
 		
